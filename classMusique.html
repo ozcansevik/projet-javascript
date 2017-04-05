@@ -1,0 +1,22 @@
+
+<html>
+
+<head>
+<meta charset="UTF-8"/>
+<script src="./classMusique.js"> </script>
+</head>
+
+<body>
+
+	<script>
+		try{
+			var mus= new Musique({titre : "Ma musique trop wow", artiste : "Chanteur", avisFav : "2"});
+			document.write("<p>"+ mus.getHtml() + "</p>");
+		}catch(err){
+			alert(err.message)
+		}
+	</script>
+
+</body>
+
+</html>

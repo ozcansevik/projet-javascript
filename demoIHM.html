@@ -1,0 +1,73 @@
+<!doctype HTML>
+<html lang=fr>
+  <head>
+    <meta charset=UTF-8/>
+    <title>FunkyJavascript</title>
+  </head>
+
+  <body>
+
+    <script src="./structureApplication.js"></script>
+    <script src="./modulePatternRegex.js"></script>
+    <script src="./mediatorInputFilter.js"></script>
+    <script src="./moduleMetierMusique.js"></script>
+    <script src="./interfaceImplementation.js"></script>
+    <script src="./fabriqueMusiquePrototype.js"></script>
+    <script src="./musiqueView.js"></script>
+    <script src="./formsGuiPrototype.js"></script>
+    <script src="./modelModule.js"></script>
+    <script src="./mediator.js"></script>
+    <script src="./guiJQueryEventsMusique.js"></script>
+    <script src="./guiBoutonModifierMusique.js"></script>
+    <script src="./guiBoutonSupprimerMusique.js"></script>
+    <script src="./guiBoutonAjouterMusique.js"></script>
+    <script src="./guiModifierMusiqueFormValidate.js"></script>
+    <script src="./guiAjouterMusiqueFormValidate.js"></script>
+    <script src="./guiMusiqueChanged.js"></script>
+    <script src="./guiDetailsChanged.js"></script>
+
+
+  <!--Code HTML de la vue Structure générale de la page HTML-->
+
+    <button id="boutonAjouterMusique">Ajouter une Musique</button><br/>
+    <span id="listeMusiques" class="panel"></span>
+    <span class="panel">
+      <span id="vueDetail">
+      </span><br/><br/>
+    </span>
+
+    <span id="spanMainForm" class="panel">
+      <form id="ajouterMusiqueForm" method="post"></form>
+      <form id="modifierMusiqueForm" method="post"></form>
+    </span>
+
+    <!--Inclusion de jQuery le plus tard possible-->
+    <script src="./jquery-3.2.0.js"></script>
+    <script src="./guiJQueryEventsMusique.js"></script>
+
+    <!--Ajout d'un main et exécution-->
+    <script>
+      /**
+      *Série d'instructions effectuées pour initialiser l'application/
+      */
+
+      myApp.addModule("mainFunction",function(){
+
+        //Musique sélectionnée par défaut
+        myApp.modele.selectedMusique=myApp.modele.musiques[0];
+
+        //Provoquer le premier affichage de la vue:
+        myApp.gui.mediator.publish("musique/changed",{musique:myApp.modele.selectedMusique});
+
+        //Enregistrement des événements utilisateurs gérés par jQuery
+        myApp.gui.initJQueryEventsMusique();
+
+      });
+
+      /////////////////////////////////////////////////////
+
+      myApp.mainFunction();
+
+  </script>
+  </body>
+</html>

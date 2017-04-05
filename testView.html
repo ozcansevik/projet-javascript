@@ -1,0 +1,50 @@
+<!doctypeHTML>
+<html lang="fr">
+<head>
+<meta charset="UTF−8"/>
+<title>Affichage de Musiques</title>
+</head>
+<body>
+
+<script src="./structureApplication.js"></script>
+
+<script src="./modulePatternRegex.js"></script>
+
+<script src="./moduleMetierMusique.js"></script>
+
+<script src="./fabriqueMusiquePrototype.js"></script>
+
+<script src="./musiqueView.js"></script>
+
+<script>
+
+var testAfficheMusique=function(musique){
+document.write("<span style=\" width:260px; display:inline−block; vertical−align:top;\">"+
+myApp.view.musique.getHtmlDevelopped(musique)+"<br/><br/>"+
+myApp.view.musique.getHtmlCompact(musique)+
+"</span>");
+
+};
+
+//Ajoutd'uneméthodemainFunction
+myApp.addModule("mainFunction",function(){
+//créationd'uneinstance
+
+
+var musique=myApp.metier.musique.createInstance({
+id:"04abf85bc9",
+titre:"titre",
+artiste:"artiste"
+//oubliduchampsnbFav
+});
+
+testAfficheMusique(musique);
+
+});
+
+//ExécutiondelaméthodemainFunction
+myApp.mainFunction();
+</script>
+<scriptsrc="jquery.js"></script>
+</body>
+</html>

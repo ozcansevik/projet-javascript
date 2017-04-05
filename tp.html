@@ -1,0 +1,62 @@
+<html>
+
+
+<script>
+	
+	//variable globale
+	var myApp = {
+		musique : {
+			"titre" : "Titre de la musique",
+			"avisFav" : 0
+		,
+		nouvelleMusique : function (titre, avisFav) {
+			this.titre = titre;
+			this.avisFav= avisFav;
+		},
+	
+		getHtmlMusique : function (musique) {
+			var chaine= "<br/>";
+			for(propriete in musique){
+				if(typeof musique[propriete] != "function")
+					chaine += propriete + " = " + musique[propriete] + "<br/>";
+			}
+			chaine += "<br/>";
+			return chaine;
+		}
+		}
+		
+		/* Strcture de l'appli */
+	
+		addModule : function(moduleName, moduleObject){
+			if(typeof(moduleName == "string" && /a-z]{1,}[a-z0-9\_]*$/i.test(moduleName)){
+				this[moduleName] = moduleObject;
+			}
+			else
+				throw{
+					name : "IllegalArgumentException",
+					message : "Impossible de créer le module"
+				}
+		},
+	
+		init : function(spec) {
+			for(propertyName in spec){
+				if(spec.hasOwnProperty(propertyName)){
+					this.addModule(propertyName,spec(propertyName]);
+				}
+			}	
+		}
+		// .... //
+		
+		myApp.init({
+			metier : {}
+		}) ;
+		/* Fin Strcture de l'appli */
+	};
+	
+	document.write("<p> Musique : <br/>" + myApp.musique.getHtmlMusique(myApp.musique) + "</p>");
+
+	
+</script>
+
+
+</html>

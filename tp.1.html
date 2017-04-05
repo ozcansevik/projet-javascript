@@ -1,0 +1,34 @@
+<html>
+
+
+<script>
+	
+	//variable globale
+	var myApp = {
+		musique : {
+			"titre" : "Titre de la musique",
+			"avisFav" : 0
+		,
+		nouvelleMusique : function (titre, avisFav) {
+			this.titre = titre;
+			this.avisFav= avisFav;
+		},
+	
+		getHtmlMusique : function (musique) {
+			var chaine= "<br/>";
+			for(propriete in musique){
+				if(typeof musique[propriete] != "function")
+					chaine += propriete + " = " + musique[propriete] + "<br/>";
+			}
+			chaine += "<br/>";
+			return chaine;
+		}
+		}
+	};
+	
+	document.write("<p> Musique : <br/>" + myApp.musique.getHtmlMusique(myApp.musique) + "</p>");
+
+</script>
+
+
+</html>
